@@ -2,7 +2,7 @@ import  { BsSearch } from "react-icons/bs"
 import { useState } from "react"
 import Search from "../Search"
 
-export default function Header() {
+export default function Header({ setSearch }) {
 
     const [isExpanded, setIsExpanded] = useState(false)
 
@@ -12,7 +12,11 @@ export default function Header() {
                 <h1 className="text-3xl text-[#e50914] font-extrabold mb-2 md:mb-0">FinProH8</h1>
                 <button onClick={() => setIsExpanded(!isExpanded)} className="block md:hidden text-2xl text-[#e50914] font-extrabold mb-2 md:mb-0"><BsSearch /></button>
             </div>
-            <Search isExpanded={isExpanded} />
+            <Search 
+                isExpanded={isExpanded}
+                setIsExpanded={setIsExpanded}
+                setSearch={setSearch}
+            />
         </div>
     )
 }
