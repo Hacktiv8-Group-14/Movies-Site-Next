@@ -13,7 +13,7 @@ export default function Carousel({ discover }) {
                     <img src={`https://image.tmdb.org/t/p/w342${discover[index]?.poster_path}`} alt="poster" className="h-28 md:h-52 rounded-lg border"/>
                     <div className="w-1/2 ml-5 h-28 md:h-52 overflow-scroll md:overflow-hidden">
                         <div className="text-base md:text-lg font-bold line-clamp-2 pb-2">{discover[index]?.title}</div>
-                        <div className="flex items-center text-xs md:text-sm pb-2 mb-2 border-b border-b-[#e50914]"><AiFillStar/>{discover[index]?.vote_average}</div>                        
+                        <div className="flex items-center text-xs md:text-sm pb-2 mb-2 border-b border-b-[#e50914]"><AiFillStar/>{discover[index]?.vote_average.toFixed(1)}</div>                        
                         <div className="text-xs md:text-sm mb-2">{discover[index]?.release_date}</div>
                         <p className="text-sm md:text-base line-clamp-4  ">{discover[index]?.overview}</p>
                     </div>

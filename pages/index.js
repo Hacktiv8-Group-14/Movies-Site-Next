@@ -13,7 +13,7 @@ const fetcher = async (url) => {
 
 export default function Home({ movies, discover }) {
 
-  const [searchMovies, setSearchMovies] = useState(null)
+  const [stateMovies, setStateMovies] = useState(movies)
   const [search, setSearch] = useState('')
   const [page, setPage] = useState(1)
   const [loading, setLoading] = useState(false)
@@ -22,7 +22,7 @@ export default function Home({ movies, discover }) {
     const fetchSearch = async () => {
       const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&query=${search}&page=1`)
       const data = await response.json()
-      setSearchMovies(data.results)
+      setStateMovies(data.results)
     }
     search !== '' && fetchSearch()
   }, [search]);
@@ -35,26 +35,27 @@ export default function Home({ movies, discover }) {
 
       <Header 
         setSearch={setSearch}
+        setStateMovies={setStateMovies}
       />
       <div className='flex flex-col items-center text-white mt-24 mb-10'>
-        {!searchMovies && (
+        {search === "" && (
           <>
             <h1 className='text-2xl md:text-3xl font-bold w-11/12 text-[#e50914]'>Popular in Indonesia</h1>
             <Carousel discover={discover} />
           </>
         )}
         <div className='flex flex-row items-center w-11/12 gap-3 text-2xl md:text-3xl font-bold text-[#e50914]'>
-          {searchMovies && (
+          {search !== "" && (
             <button className='bg-[#e50914] text-black p-1 rounded-lg' onClick={() => {
               setSearch('')
-              setSearchMovies(null)
+              setStateMovies(movies)
             }}>
               <AiOutlineHome />
             </button>
           )}
           <h1 className=''>{search ? `Search results for '${search}'` : 'Trending this week'}</h1>
         </div>
-        <Movies movies={movies} searchMovies={searchMovies} />
+        <Movies movies={stateMovies} />
       </div>
     </>
   )
