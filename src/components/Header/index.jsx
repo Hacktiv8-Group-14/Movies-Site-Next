@@ -2,7 +2,7 @@ import  { BsSearch } from "react-icons/bs"
 import { useState } from "react"
 import Search from "../Search"
 
-export default function Header({ setSearch, setStateMovies }) {
+export default function Header({ search, setSearch, setStateMovies }) {
 
     const [isExpanded, setIsExpanded] = useState(false)
 
@@ -17,6 +17,7 @@ export default function Header({ setSearch, setStateMovies }) {
                 setIsExpanded={setIsExpanded}
                 setSearch={setSearch}
                 setStateMovies={setStateMovies}
+                search={search}
             />
         </div>
     )

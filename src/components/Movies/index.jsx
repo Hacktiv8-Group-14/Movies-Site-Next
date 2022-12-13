@@ -1,6 +1,7 @@
 import  {AiFillStar} from 'react-icons/ai'
+import Pagination from '../Pagination'
 
-export default function Movies({ movies }) {
+export default function Movies({ movies, search, page, setPage, totalPages, loading }) {
     return(
         <div className="flex w-11/12 mt-4 justify-center">
             <div className="flex-flex-col items-center">
@@ -24,7 +25,14 @@ export default function Movies({ movies }) {
                             </div>
                         ))
                     )}
-                </div>
+                </div>               
+                {search !== "" && (
+                    <Pagination 
+                        page={page}
+                        setPage={setPage}
+                        totalPages={totalPages}
+                    />
+                )}
             </div>
         </div>
     )

@@ -5,35 +5,33 @@ import Carousel from '../src/components/Carousel'
 import { useState, useEffect } from 'react';
 import { AiOutlineHome } from 'react-icons/ai'
 
-const fetcher = async (url) => {
-  const response = await fetch(url)
-  const data = await response.json()
-  return data
-}
-
 export default function Home({ movies, discover }) {
 
   const [stateMovies, setStateMovies] = useState(movies)
   const [search, setSearch] = useState('')
   const [page, setPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(null)
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const fetchSearch = async () => {
-      const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&query=${search}&page=1`)
+      setStateMovies(null)
+      const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&query=${search}&page=${page}`)
       const data = await response.json()
+      setTotalPages(data.total_pages)
       setStateMovies(data.results)
     }
     search !== '' && fetchSearch()
-  }, [search]);
+  }, [search, page]);
 
   return (
     <>
       <Head>
-        <title>FinProH8</title>
+        <title>{search !== "" ? `Search - ${search}` : 'FinProH8'}</title>
       </Head>
 
-      <Header 
+      <Header
+        search={search} 
         setSearch={setSearch}
         setStateMovies={setStateMovies}
       />
@@ -55,7 +53,14 @@ export default function Home({ movies, discover }) {
           )}
           <h1 className=''>{search ? `Search results for '${search}'` : 'Trending this week'}</h1>
         </div>
-        <Movies movies={stateMovies} />
+        <Movies 
+          movies={stateMovies} 
+          search={search} 
+          page={page}
+          setPage={setPage}
+          totalPages={totalPages}
+          loading={loading}
+        />
       </div>
     </>
   )
