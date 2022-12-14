@@ -5,6 +5,11 @@ export default function Movies({ movies, search, page, setPage, totalPages, load
     return(
         <div className="flex w-11/12 mt-4 justify-center">
             <div className="flex-flex-col items-center">
+                {movies?.length === 0 && (
+                    <div className='text-xl font-bold italic'>
+                        <span>No result for "{search}"</span>
+                    </div>
+                )}
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
                     { movies && (
                         movies?.map((movie) => (
@@ -26,7 +31,7 @@ export default function Movies({ movies, search, page, setPage, totalPages, load
                         ))
                     )}
                 </div>               
-                {search !== "" && (
+                {search !== "" || movies?.length > 0 && (
                     <Pagination 
                         page={page}
                         setPage={setPage}

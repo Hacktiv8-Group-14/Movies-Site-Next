@@ -16,8 +16,6 @@ export default function Header({ search, setSearch, setStateMovies }) {
                 isExpanded={isExpanded}
                 setIsExpanded={setIsExpanded}
                 setSearch={setSearch}
-                setStateMovies={setStateMovies}
-                search={search}
             />
         </div>
     )
