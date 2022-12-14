@@ -23,6 +23,10 @@ export default function Home({ movies, discover }) {
     }
     search !== '' && fetchSearch()
   }, [search, page]);
+  
+  useEffect(() => {
+    setPage(1)
+  }, [search]);
 
   return (
     <>

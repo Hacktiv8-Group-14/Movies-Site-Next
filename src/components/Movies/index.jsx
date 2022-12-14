@@ -31,7 +31,7 @@ export default function Movies({ movies, search, page, setPage, totalPages, load
                         ))
                     )}
                 </div>               
-                {search !== "" || movies?.length > 0 && (
+                {search !== "" && movies?.length > 0 && (
                     <Pagination 
                         page={page}
                         setPage={setPage}
