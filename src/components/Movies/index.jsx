@@ -7,7 +7,7 @@ export default function Movies({ movies, search, page, setPage, totalPages, load
             <div className="flex-flex-col items-center">
                 {movies?.length === 0 && (
                     <div className='text-xl font-bold italic'>
-                        <span>No result for "{search}"</span>
+                        <span>No result for &quot;{search}&quot;</span>
                     </div>
                 )}
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
