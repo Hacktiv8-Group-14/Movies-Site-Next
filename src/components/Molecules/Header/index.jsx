@@ -12,6 +12,7 @@ export default function Header({ search, setSearch, setStateMovies, movies }) {
           onClick={() => {
             setSearch("");
             setStateMovies(movies);
+            window.scrollTo({ top: 0 });
           }}
         />
         <Button
