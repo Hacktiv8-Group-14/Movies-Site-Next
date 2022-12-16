@@ -31,7 +31,7 @@ export default function Home({ movies, discover }) {
   return (
     <>
       <Head>
-        <title>{search !== "" ? `Search - ${search}` : "FinProH8"}</title>
+        <title>{search !== "" ? `Search - ${search}` : "Hackflix"}</title>
       </Head>
 
       <Navbar
