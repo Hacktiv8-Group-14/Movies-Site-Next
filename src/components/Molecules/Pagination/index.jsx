@@ -20,8 +20,8 @@ export default function Pagination({ page, setPage, totalPages }) {
             >
                 <AiOutlineLeft />
             </button>
-            <span className={`text-base sm:text-lg w-5 sm:w-7 mx-1 ${page-3 < 1 ? 'invisible' : 'visible'}`}>
-                …
+            <span className={`text-base sm:text-lg w-5 sm:w-7 mx-1 ${page-3 < 0 ? 'invisible' : 'visible'} sm:${page-3 < 1 ? 'invisible' : 'visible'} text-center`}>
+                ...
             </span>
             <button 
                 className={`text-base sm:text-lg w-5 sm:w-7 mx-1 hidden sm:block ${page-2 < 1 ? 'invisible' : 'visible'}`} 
@@ -62,8 +62,8 @@ export default function Pagination({ page, setPage, totalPages }) {
             >
                 {page+2}
             </button>
-            <span className={`text-base sm:text-lg w-5 sm:w-7 mx-1 ${page+3 > totalPages ? 'invisible' : 'visible'}`}>
-                …
+            <span className={`text-base sm:text-lg w-5 sm:w-7 mx-1 ${page+3 > totalPages+1 ? 'invisible' : 'visible'} sm:${page+3 > totalPages ? 'invisible' : 'visible'} text-center`}>
+                ...
             </span>
             <button 
                 className={`text-[#e50914] text-xl sm:text-2xl ${page === totalPages ? 'invisible' : 'visible'}`} 
