@@ -1,12 +1,12 @@
-import Link from "next/link";
 import Button from "../Button";
 
 export default function Logo({ onClick }) {
   return (
     <Button onClick={onClick}>
-      <h1 className="text-3xl text-[#e50914] font-extrabold mb-2 md:mb-0">
-        FinProH8
-      </h1>
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/upload-113c4.appspot.com/o/Logo.png?alt=media&token=ac446f19-e25e-45b4-9f66-d1fb4b064fbe"
+        alt="logo"
+      />
     </Button>
   );
 }

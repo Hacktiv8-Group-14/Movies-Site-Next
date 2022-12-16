@@ -1,8 +1,8 @@
 import Head from "next/head";
-import { Carousel, Movies, Header, Footer } from "../src/components/Molecules";
+import { Carousel, Movies, Navbar, Footer } from "../src/components/Molecules";
 import { useState, useEffect } from "react";
 import { AiOutlineHome } from "react-icons/ai";
-import { Button } from "../src/components/Atoms";
+import { Button, Header } from "../src/components/Atoms";
 
 export default function Home({ movies, discover }) {
   const [stateMovies, setStateMovies] = useState(movies);
@@ -34,7 +34,7 @@ export default function Home({ movies, discover }) {
         <title>{search !== "" ? `Search - ${search}` : "FinProH8"}</title>
       </Head>
 
-      <Header
+      <Navbar
         search={search}
         setSearch={setSearch}
         setStateMovies={setStateMovies}
@@ -43,27 +43,27 @@ export default function Home({ movies, discover }) {
       <div className="flex flex-col items-center text-white mt-24 mb-10">
         {search === "" && (
           <>
-            <h1 className="text-2xl md:text-3xl font-bold w-11/12 text-[#e50914]">
-              Popular in Indonesia
-            </h1>
+            <Header title="Popular in Indonesia" />
             <Carousel discover={discover} />
           </>
         )}
-        <div className="flex flex-row items-center w-11/12 gap-3 text-2xl md:text-3xl font-bold text-[#e50914]">
+        <div className="flex flex-row items-center w-11/12 gap-3 text-2xl md:text-3xl font-bold text-red">
           {search !== "" && (
             <Button
-              className="bg-[#e50914] text-black p-1 rounded-lg"
+              className="bg-red text-black p-1 rounded-lg"
               onClick={() => {
                 setSearch("");
                 setStateMovies(movies);
               }}
             >
-              <AiOutlineHome />
+              <AiOutlineHome color="white" />
             </Button>
           )}
-          <h1 className="">
-            {search ? `Search results for '${search}'` : "Trending this week"}
-          </h1>
+          <Header
+            title={
+              search ? `Search results for '${search}'` : "Trending this week"
+            }
+          />
         </div>
         <Movies
           movies={stateMovies}

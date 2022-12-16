@@ -1,7 +1,8 @@
 import Carousel from "./Carousel";
-import Header from "./Header";
+import Navbar from "./Navbar";
 import Movies from "./Movies";
 import Pagination from "./Pagination";
 import Footer from "./Footer";
+import Search from "./Search";
 
-export { Carousel, Header, Movies, Pagination, Footer };
+export { Carousel, Navbar, Movies, Pagination, Footer, Search };
