@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Carousel, Movies, Header } from "../src/components/Molecules";
+import { Carousel, Movies, Header, Footer } from "../src/components/Molecules";
 import { useState, useEffect } from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { Button } from "../src/components/Atoms";
@@ -72,6 +72,13 @@ export default function Home({ movies, discover }) {
           setPage={setPage}
           totalPages={totalPages}
           loading={loading}
+        />
+      </div>
+      <div className="border-t-2 border-t-gray-900">
+        <Footer
+          setSearch={setSearch}
+          setStateMovies={setStateMovies}
+          movies={movies}
         />
       </div>
     </>
